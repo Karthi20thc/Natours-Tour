@@ -1,0 +1,51 @@
+doctype html
+html
+ head 
+   block head
+     //- meta(http-equiv="content-security-policy" content="script-src \'self\' js.stripe.com \'unsafe-inline\'")
+     meta(charset='UTF-8')
+     meta(name='viewport' content='width=device-width, initial-scale=1.0')
+     link(rel='stylesheet' href='/css/style.css')
+     link(rel='stylesheet' href='https://fonts.googleapis.com/css?family=Lato:300,300i,700')
+     link(rel='shortcut icon' type='image/png' href='/img/favicon.png')
+     title Natours | #{title}
+    
+ body 
+  // HEADER
+  include _header
+
+  block content 
+   h1 This is the placeholder
+
+  // FOOTER
+  include _footer
+
+  //- script(src="/js/index.js")
+  //- This will expose stripe object to the global scope 
+  script(src='https://js.stripe.com/v3/')
+  script(src="/js/bundle.js")
+   
+
+
+  
+ 
+
+
+
+
+//- Basics
+ body 
+   h1 Welcome to Server-side Rendering
+
+   //- Example of buffered code
+   p= name
+
+   //-Using Javascript
+   p= name.toUpperCase()
+
+   //- tempelate literal
+   p #{name} 
+
+   //-unbuffered code - code that is not going to add to the output
+   - const x = 9;
+   h2= age+x
