@@ -28,6 +28,32 @@ export const login = async (email, password) => {
  }
 }
 
+export const signup = async (name, email, password, passwordconfirm) => {
+ try {
+  const res = await axios({
+   method: 'POST',
+   url: '/api/v1/users/signup',
+   data: {
+    name: name,
+    email: email,
+    password: password,
+    passwordConfirm: passwordconfirm
+   }
+  });
+  console.log(res.data)
+  if (res.data.status === 'success') {
+   // First argument is for maniuplating Css
+   showAlert('success', 'Signed up successfully,Taking you to Main Page')
+   window.setTimeout(() => {
+    location.assign('/')
+   }, 1000)
+  }
+
+ } catch (error) {
+  showAlert('error', error.response.data.message)
+ }
+}
+
 export const logout = async () => {
  try {
   const res = await axios({

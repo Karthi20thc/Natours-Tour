@@ -1,13 +1,15 @@
 import '@babel/polyfill';
-import { login, logout } from "./login";
+import { login, logout, signup } from "./login";
 import { displayMap } from "./mapBox";
 import { updateSettings } from './updateSettings';
 import { bookTour } from './stripe';
 
 
+
 // DOM ELEMENTS
 const mapBox = document.getElementById('map');
 const loginForm = document.querySelector('.login-form');
+const signupForm = document.querySelector('.signup-form');
 const logOutBtn = document.querySelector('.nav__el--logout');
 const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
@@ -34,6 +36,20 @@ if (loginForm) {
 
   // Make the Ajax call
   login(email, password);
+
+ })
+}
+
+if (signupForm) {
+ signupForm.addEventListener('submit', event => {
+  event.preventDefault();
+
+  const name = document.getElementById('name').value;
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+  const passwordconfirm = document.getElementById('passwordconfirm').value;
+
+  signup(name, email, password, passwordconfirm)
 
  })
 }
